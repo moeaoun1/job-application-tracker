@@ -42,11 +42,13 @@ src/
 
 ## 📦 Setup Instructions
 
+## 📄 License
+
+MIT — free to use, modify, and distribute.
+
 ```bash
 git clone https://github.com/moeaoun1/job-application-tracker.git
 cd job-application-tracker
 npm install
 npm start
 
-📄 License
-MIT — free to use, modify, and distribute.
