@@ -14,7 +14,7 @@ Built with beginner-friendly React patterns and deployed via Netlify.
 
 ## 🚀 Live Demo
 
-👉 [View live on Netlify](https://your-app-name.netlify.app)  
+👉 [View live on Netlify](https://job-tracker-moe.netlify.app)  
 _(Replace this with your actual deployed link)_
 
 ## 🖼️ Screenshots
