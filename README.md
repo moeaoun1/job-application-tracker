@@ -5,17 +5,17 @@ Built with beginner-friendly React patterns and deployed via Netlify.
 
 ## 🔧 Features
 
-- ✅ Add new job applications (title, company, status)
+- ✅ Add new job applications (title, company, status, date applied)
 - ✏️ Edit job entries inline
 - 🗑️ Delete entries
 - 🔍 Filter by application status
+- 📅 Sort by date, title, or status (ascending/descending)
 - 💾 Persists data in `localStorage`
 - 📱 Clean UI styled with vanilla CSS
 
 ## 🚀 Live Demo
 
-👉 [View live on Netlify](https://job-tracker-moe.netlify.app)  
-_(Replace this with your actual deployed link)_
+👉 [View live on Netlify](https://job-tracker-moe.netlify.app)
 
 ## 🖼️ Screenshots
 
@@ -23,32 +23,46 @@ _(Replace this with your actual deployed link)_
 |-----------|-----------|
 | ![Main view](screenshots/main.png) | ![Edit mode](screenshots/edit.png) |
 
-> Save screenshots in a `screenshots/` folder in your repo
+> Screenshots are stored in the `/screenshots/` directory of this repo.
 
 ## 🛠️ Tech Stack
 
-- React (Create React App)
-- HTML/CSS
+- React (via Create React App)
+- HTML + CSS
 - JavaScript (ES6+)
-- Netlify (deployment)
+- Netlify (for deployment)
 
-## 🗂️ File Structure
+## 🗂️ Project Structure
+
 <pre>
-src/
-├── App.js
-├── JobForm.js
-├── index.js
-├── index.css
+mini-react-app/
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── screenshots/
+│   ├── main.png
+│   └── edit.png
+├── src/
+│   ├── App.js
+│   ├── JobForm.js
+│   ├── index.js
+│   └── index.css
+├── .gitignore
+├── README.md
+├── package.json
+└── package-lock.json
 </pre>
+
 ## 📦 Setup Instructions
 
-## 📄 License
-
-MIT — free to use, modify, and distribute.
+Clone the repo and run the app locally:
 
 ```bash
 git clone https://github.com/moeaoun1/job-application-tracker.git
 cd job-application-tracker
 npm install
 npm start
-
