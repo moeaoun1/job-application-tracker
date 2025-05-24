@@ -8,11 +8,14 @@ function App() {
     });
 
     const [filter, setFilter] = useState('All');
+    const [sortField, setSortField] = useState('date');
+    const [sortDirection, setSortDirection] = useState('desc');
     const [editingIndex, setEditingIndex] = useState(null);
     const [editedJob, setEditedJob] = useState({
         title: '',
         company: '',
         status: 'Applied',
+        date: '',
     });
 
     useEffect(() => {
@@ -39,15 +42,34 @@ function App() {
         setEditingIndex(null);
     };
 
-    const filteredJobs =
-        filter === 'All' ? jobs : jobs.filter((job) => job.status === filter);
+    // Filter
+    let filteredJobs = filter === 'All' ? jobs : jobs.filter((job) => job.status === filter);
+
+    // Sort
+    filteredJobs.sort((a, b) => {
+        let valA = a[sortField];
+        let valB = b[sortField];
+
+        // Convert to dates for 'date'
+        if (sortField === 'date') {
+            valA = new Date(valA);
+            valB = new Date(valB);
+        } else {
+            valA = valA.toLowerCase();
+            valB = valB.toLowerCase();
+        }
+
+        if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
+        if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+        return 0;
+    });
 
     return (
         <div>
             <h1>Job Application Tracker</h1>
             <JobForm onAddJob={handleAddJob} />
 
-            <div>
+            <div style={{ marginBottom: '1rem' }}>
                 <label style={{ marginRight: '0.5rem' }}>Filter by Status:</label>
                 <select value={filter} onChange={(e) => setFilter(e.target.value)}>
                     <option value="All">All</option>
@@ -55,6 +77,18 @@ function App() {
                     <option value="Interviewing">Interviewing</option>
                     <option value="Offered">Offered</option>
                     <option value="Rejected">Rejected</option>
+                </select>
+
+                <label style={{ marginLeft: '1rem', marginRight: '0.5rem' }}>Sort by:</label>
+                <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
+                    <option value="date">Date Applied</option>
+                    <option value="title">Title</option>
+                    <option value="status">Status</option>
+                </select>
+
+                <select value={sortDirection} onChange={(e) => setSortDirection(e.target.value)} style={{ marginLeft: '0.5rem' }}>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
                 </select>
             </div>
 
@@ -64,6 +98,7 @@ function App() {
                     <th>Title</th>
                     <th>Company</th>
                     <th>Status</th>
+                    <th>Date Applied</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -73,7 +108,8 @@ function App() {
                         (j) =>
                             j.title === job.title &&
                             j.company === job.company &&
-                            j.status === job.status
+                            j.status === job.status &&
+                            j.date === job.date
                     );
 
                     if (editingIndex === actualIndex) {
@@ -111,6 +147,15 @@ function App() {
                                     </select>
                                 </td>
                                 <td>
+                                    <input
+                                        type="date"
+                                        value={editedJob.date}
+                                        onChange={(e) =>
+                                            setEditedJob({ ...editedJob, date: e.target.value })
+                                        }
+                                    />
+                                </td>
+                                <td>
                                     <button onClick={() => handleSaveEdit(actualIndex)}>Save</button>
                                     <button onClick={() => setEditingIndex(null)}>Cancel</button>
                                 </td>
@@ -123,6 +168,7 @@ function App() {
                             <td>{job.title}</td>
                             <td>{job.company}</td>
                             <td>{job.status}</td>
+                            <td>{job.date}</td>
                             <td>
                                 <button onClick={() => handleEditJob(actualIndex)}>Edit</button>
                                 <button onClick={() => handleDeleteJob(actualIndex)}>Delete</button>
