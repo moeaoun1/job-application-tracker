@@ -33,13 +33,13 @@ _(Replace this with your actual deployed link)_
 - Netlify (deployment)
 
 ## 🗂️ File Structure
-
+<pre>
 src/
 ├── App.js
 ├── JobForm.js
 ├── index.js
 ├── index.css
-
+</pre>
 ## 📦 Setup Instructions
 
 ## 📄 License
