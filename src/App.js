@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './index.css';
 import JobForm from './JobForm';
 
 function App() {
@@ -42,15 +43,12 @@ function App() {
         setEditingIndex(null);
     };
 
-    // Filter
     let filteredJobs = filter === 'All' ? jobs : jobs.filter((job) => job.status === filter);
 
-    // Sort
     filteredJobs.sort((a, b) => {
         let valA = a[sortField];
         let valB = b[sortField];
 
-        // Convert to dates for 'date'
         if (sortField === 'date') {
             valA = new Date(valA);
             valB = new Date(valB);
@@ -67,6 +65,12 @@ function App() {
     return (
         <div>
             <h1>Job Application Tracker</h1>
+
+            <p className="note-banner">
+                Track your job applications easily. Add roles, update statuses, and stay organized throughout your job hunt.<br />
+                <strong>Note:</strong> Your data is saved locally in your browser and won’t persist across devices.
+            </p>
+
             <JobForm onAddJob={handleAddJob} />
 
             <div style={{ marginBottom: '1rem' }}>
@@ -86,7 +90,11 @@ function App() {
                     <option value="status">Status</option>
                 </select>
 
-                <select value={sortDirection} onChange={(e) => setSortDirection(e.target.value)} style={{ marginLeft: '0.5rem' }}>
+                <select
+                    value={sortDirection}
+                    onChange={(e) => setSortDirection(e.target.value)}
+                    style={{ marginLeft: '0.5rem' }}
+                >
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>
@@ -178,6 +186,10 @@ function App() {
                 })}
                 </tbody>
             </table>
+
+            <footer className="footer">
+                © 2025 Moe Aoun
+            </footer>
         </div>
     );
 }

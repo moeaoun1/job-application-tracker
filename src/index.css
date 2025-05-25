@@ -94,3 +94,24 @@ td button:nth-child(2):hover {
 select {
     padding: 0.5rem;
 }
+
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.note-banner {
+    background-color: #eef6fc;
+    color: #2c3e50;
+    padding: 1rem;
+    margin: 1rem auto 2rem auto;
+    max-width: 900px;
+    border-left: 6px solid #3498db;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+}
