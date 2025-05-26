@@ -23,7 +23,6 @@ Built with beginner-friendly React patterns and deployed via Netlify.
 |-----------|-----------|
 | ![Main view](screenshots/main.png) | ![Edit mode](screenshots/edit.png) |
 
-> Screenshots are stored in the `/screenshots/` directory of this repo.
 
 ## 🛠️ Tech Stack
 
